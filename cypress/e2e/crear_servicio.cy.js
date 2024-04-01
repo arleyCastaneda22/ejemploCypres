@@ -1,21 +1,15 @@
-describe('Llena los campos para una nueva cita y la muestra', () => {
-    it('Campos de la nueva cita', () => {
+describe('Llena los campos para un servicio', () => {
+    it('Campos del nuevo servicio', () => {
         //! De esta forma estamos seguros de que el usuario que esta viendo este proyecto va a ver los que teníamos en mente y lo que queríamos mostrar
 
 
         cy.visit('/index.html');
 
-        cy.get("[data-cy='mascota']").type('Max'); /// Aca le pones lo que quieres escribir
+        cy.get("[data-cy='nombre-servicio']").type('Corte de pelo'); /// Aca le pones lo que quieres escribir
 
-        cy.get("[data-cy='propietario']").type('Jesús Cochero');
+        cy.get("[data-cy='duracion']").type('1 hora');
 
-        cy.get("[data-cy='telefono']").type('3235252137');
-
-        cy.get("[data-cy='fecha']").type('2023-05-14');
-
-        cy.get("[data-cy='hora']").type('10:30');
-
-        cy.get("[data-cy='sintomas']").type('No come chocolates..');
+        cy.get("[data-cy='precio']").type('50');
 
         //* Enviar cita
         cy.get("[type='submit']").click();
@@ -23,7 +17,7 @@ describe('Llena los campos para una nueva cita y la muestra', () => {
         //. verificar el texto de citas
         cy.get('[id="administra"]')
             .invoke('text') //* Vamos a seleccionar el texto
-            .should('equal', 'Administra tus Citas '); //. Resultado: nos dice que si se encuentra ese texto nuevo
+            .should('equal', 'Administrar Servicios'); //. Resultado: nos dice que si se encuentra ese texto nuevo
 
         //. Seleccionar la alerta
         cy.get('[data-cy="alerta"]')

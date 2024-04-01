@@ -1,18 +1,16 @@
-// CLasses
-class Citas {
+class Servicios {
     constructor() {
-        this.citas = []
+        this.servicios = [];
     }
-    agregarCita(cita) {
-        this.citas = [...this.citas, cita];
+    agregarServicio(servicio) {
+        this.servicios = [...this.servicios, servicio];
     }
-    editarCita(citaActualizada) {
-        this.citas = this.citas.map( cita => cita.id === citaActualizada.id ? citaActualizada : cita)
+    editarServicio(servicioActualizado) {
+        this.servicios = this.servicios.map(servicio => servicio.id === servicioActualizado.id ? servicioActualizado : servicio);
     }
-
-    eliminarCita(id) {
-        this.citas = this.citas.filter( cita => cita.id !== id);
+    eliminarServicio(id) {
+        this.servicios = this.servicios.filter(servicio => servicio.id !== id);
     }
 }
 
-export default Citas;
+export default Servicios;

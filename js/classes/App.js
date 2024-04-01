@@ -1,11 +1,8 @@
-import { datosCita, nuevaCita } from '../funciones.js';
+import { datosServicio, nuevaSolicitud } from '../funciones.js';
 import { 
-    mascotaInput, 
-    propietarioInput, 
-    telefonoInput, 
-    fechaInput, 
-    horaInput, 
-    sintomasInput, 
+    nombreServicioInput, 
+    duracionInput, 
+    precioInput, 
     formulario 
 } from '../selectores.js';
 
@@ -16,15 +13,12 @@ class App {
     }
 
     initApp() {
-        mascotaInput.addEventListener('change', datosCita);
-        propietarioInput.addEventListener('change', datosCita);
-        telefonoInput.addEventListener('change', datosCita);
-        fechaInput.addEventListener('change', datosCita);
-        horaInput.addEventListener('change', datosCita);
-        sintomasInput.addEventListener('change', datosCita);
+        nombreServicioInput.addEventListener('change', datosServicio);
+        duracionInput.addEventListener('change', datosServicio);
+        precioInput.addEventListener('change', datosServicio);
 
-        // Formulario para nuevas citas
-        formulario.addEventListener('submit', nuevaCita);
+        // Formulario para nuevas solicitudes de servicio
+        formulario.addEventListener('submit', nuevaSolicitud);
 
     }
 

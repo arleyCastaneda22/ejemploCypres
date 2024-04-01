@@ -1,9 +1,9 @@
-import { eliminarCita, cargarEdicion } from '../funciones.js';
-import { contenedorCitas, heading } from '../selectores.js';
+import { eliminarServicio, cargarEdicionServicio } from '../funciones.js';
+import { contenedorServicios, heading } from '../selectores.js';
 
 class UI {
-    constructor({ citas }) {
-        this.textoHeading(citas);
+    constructor({ servicios }) {
+        this.textoHeading(servicios);
     }
 
     imprimirAlerta(mensaje, tipo) {
@@ -33,59 +33,47 @@ class UI {
         // Insertar en el DOM
         document
             .querySelector('#contenido')
-            .insertBefore(divMensaje, document.querySelector('.agregar-cita'));
+            .insertBefore(divMensaje, document.querySelector('.agregar-servicio'));
 
-        // Quitar el alert despues de 3 segundos
+        // Quitar el alert después de 3 segundos
         setTimeout(() => {
             divMensaje.remove();
         }, 3000);
     }
 
-    imprimirCitas({ citas }) {
+    imprimirServicios({ servicios }) {
         // Se puede aplicar destructuring desde la función...
 
         this.limpiarHTML();
 
-        this.textoHeading(citas);
+        this.textoHeading(servicios);
 
-        citas.forEach((cita) => {
+        servicios.forEach((servicio) => {
             const {
-                mascota,
-                propietario,
-                telefono,
-                fecha,
-                hora,
-                sintomas,
+                nombre,
+                duracion,
+                precio,
                 id,
-            } = cita;
+            } = servicio;
 
-            const divCita = document.createElement('div');
-            divCita.classList.add('cita', 'p-3');
-            divCita.dataset.id = id;
+            const divServicio = document.createElement('div');
+            divServicio.classList.add('servicio', 'p-3');
+            divServicio.dataset.id = id;
 
-            // scRIPTING DE LOS ELEMENTOS...
-            const mascotaParrafo = document.createElement('h2');
-            mascotaParrafo.classList.add('card-title', 'font-weight-bolder');
-            mascotaParrafo.innerHTML = `${mascota}`;
+            // SCRIPTING DE LOS ELEMENTOS...
+            const nombreParrafo = document.createElement('h2');
+            nombreParrafo.classList.add('card-title', 'font-weight-bolder');
+            nombreParrafo.innerHTML = `${nombre}`;
 
-            const propietarioParrafo = document.createElement('p');
-            propietarioParrafo.innerHTML = `<span class="font-weight-bolder">Propietario: </span> ${propietario}`;
+            const duracionParrafo = document.createElement('p');
+            duracionParrafo.innerHTML = `<span class="font-weight-bolder">Duración: </span> ${duracion}`;
 
-            const telefonoParrafo = document.createElement('p');
-            telefonoParrafo.innerHTML = `<span class="font-weight-bolder">Teléfono: </span> ${telefono}`;
-
-            const fechaParrafo = document.createElement('p');
-            fechaParrafo.innerHTML = `<span class="font-weight-bolder">Fecha: </span> ${fecha}`;
-
-            const horaParrafo = document.createElement('p');
-            horaParrafo.innerHTML = `<span class="font-weight-bolder">Hora: </span> ${hora}`;
-
-            const sintomasParrafo = document.createElement('p');
-            sintomasParrafo.innerHTML = `<span class="font-weight-bolder">Síntomas: </span> ${sintomas}`;
+            const precioParrafo = document.createElement('p');
+            precioParrafo.innerHTML = `<span class="font-weight-bolder">Precio: </span> ${precio}`;
 
             // Agregar un botón de eliminar...
             const btnEliminar = document.createElement('button');
-            btnEliminar.onclick = () => eliminarCita(id); // añade la opción de eliminar
+            btnEliminar.onclick = () => eliminarServicio(id); // añade la opción de eliminar
 
             btnEliminar.classList.add('btn', 'btn-danger', 'mr-2');
 
@@ -97,7 +85,7 @@ class UI {
 
             // Añade un botón de editar...
             const btnEditar = document.createElement('button');
-            btnEditar.onclick = () => cargarEdicion(cita);
+            btnEditar.onclick = () => cargarEdicionServicio(servicio);
 
             btnEditar.classList.add('btn', 'btn-info');
 
@@ -108,30 +96,27 @@ class UI {
                 'Editar <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>';
 
             // Agregar al HTML
-            divCita.appendChild(mascotaParrafo);
-            divCita.appendChild(propietarioParrafo);
-            divCita.appendChild(telefonoParrafo);
-            divCita.appendChild(fechaParrafo);
-            divCita.appendChild(horaParrafo);
-            divCita.appendChild(sintomasParrafo);
-            divCita.appendChild(btnEliminar);
-            divCita.appendChild(btnEditar);
+            divServicio.appendChild(nombreParrafo);
+            divServicio.appendChild(duracionParrafo);
+            divServicio.appendChild(precioParrafo);
+            divServicio.appendChild(btnEliminar);
+            divServicio.appendChild(btnEditar);
 
-            contenedorCitas.appendChild(divCita);
+            contenedorServicios.appendChild(divServicio);
         });
     }
 
-    textoHeading(citas) {
-        if (citas.length > 0) {
-            heading.textContent = 'Administra tus Citas ';
+    textoHeading(servicios) {
+        if (servicios.length > 0) {
+            heading.textContent = 'Administra tus Servicios';
         } else {
-            heading.textContent = 'No hay Citas, comienza creando una';
+            heading.textContent = 'No hay Servicios, comienza agregando uno';
         }
     }
 
     limpiarHTML() {
-        while (contenedorCitas.firstChild) {
-            contenedorCitas.removeChild(contenedorCitas.firstChild);
+        while (contenedorServicios.firstChild) {
+            contenedorServicios.removeChild(contenedorServicios.firstChild);
         }
     }
 }

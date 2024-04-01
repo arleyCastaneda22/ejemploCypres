@@ -4,65 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Administrador de Pacientes</title>
+    <title>Solicitud de Servicio</title>
     <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/custom-styles.css"> <!-- Cambié el nombre del archivo CSS -->
 </head>
 <body>
-    <h1 data-cy="titulo-proyecto" class="text-center my-5 titulo">Administrador de Pacientes de Veterinaria</h1>
     <div class="container mt-5 p-5">
         <div id="contenido" class="row">
-            <div class="col-md-6 agregar-cita">
-                <form data-cy="formulario" id="nueva-cita">
-                    <legend class="mb-4">Datos del Paciente</legend>
+            <div class="col-md-6 agregar-servicio">
+                <form data-cy="formulario" id="nuevo-servicio" action="/solicitar-servicio" method="POST">
+                    <legend class="mb-4" style="color: #333; font-size: 1.5rem;">Solicitud de Servicio</legend> <!-- Cambié el color y el tamaño de la fuente -->
                     <div class="form-group row">
-                        <label class="col-sm-4 col-lg-4 col-form-label">Nombre Mascota:</label>
-                        <div class="col-sm-8 col-lg-8">
-                            <input data-cy="mascota" type="text" id="mascota" name="mascota" class="form-control" placeholder="Nombre Mascota">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-4 col-lg-4 col-form-label">Propietario:</label>
-                        <div class="col-sm-8 col-lg-8">
-                            <input data-cy="propietario" type="text" id="propietario" name="propietario" class="form-control"  placeholder="Nombre Dueño de la Mascota">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-4 col-lg-4 col-form-label">Teléfono:</label>
-                        <div class="col-sm-8 col-lg-8">
-                            <input data-cy="telefono" type="tel" id="telefono" name="telefono" class="form-control"  placeholder="Número de Teléfono">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-4 col-lg-4 col-form-label">Fecha:</label>
-                        <div class="col-sm-8 col-lg-8">
-                            <input data-cy="fecha" type="date" id="fecha" name="fecha" class="form-control">
+                        <label class="col-sm-4 col-form-label">Nombre del Servicio:</label>
+                        <div class="col-sm-8">
+                            <input data-cy="nombre-servicio" type="text" id="nombre-servicio" name="nombre-servicio" class="form-control" placeholder="Nombre del Servicio">
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label class="col-sm-4 col-lg-4 col-form-label">Hora:</label>
-                        <div class="col-sm-8 col-lg-8">
-                            <input data-cy="hora" type="time" id="hora" name="hora" class="form-control">
+                        <label class="col-sm-4 col-form-label">Duración:</label>
+                        <div class="col-sm-8">
+                            <input data-cy="duracion" type="text" id="duracion" name="duracion" class="form-control" placeholder="Duración del Servicio">
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label class="col-sm-4 col-lg-4 col-form-label">Sintomas:</label>
-                        <div class="col-sm-8 col-lg-8">
-                            <textarea  data-cy="sintomas" id="sintomas" name="sintomas" class="form-control"></textarea>
+                        <label class="col-sm-4 col-form-label">Precio:</label>
+                        <div class="col-sm-8">
+                            <input data-cy="precio" type="text" id="precio" name="precio" class="form-control" placeholder="Precio del Servicio">
                         </div>
                     </div>
+
                     <div class="form-group">
-                            <button type="submit" class="btn btn-success w-100 d-block">Crear Cita</button>
+                        <button type="submit" class="btn btn-primary w-100 d-block">Solicitar Servicio</button> <!-- Cambié el color del botón a primario -->
                     </div>
                 </form>
             </div>
-            <div class="col-md-6">
-                <h2 id="administra" class="mb-4"></h2>
-                <ul id="citas" class="list-group lista-citas"></ul>
-            </div>
         </div> <!--.row-->
+        <div class="col-md-6">
+            <h2 id="administra" class="mb-4" style="color: #333;">Administrar Servicios</h2> <!-- Cambié el texto y el color -->
+            <ul id="servicios" class="list-group lista-citas"></ul>
+        </div>
     </div><!--.container-->
 
     <script src="js/app.js" type="module"></script>

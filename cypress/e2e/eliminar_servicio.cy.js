@@ -4,17 +4,11 @@ describe('Llena los campos para una nueva cita y la elimina', () => {
 
         cy.visit('/index.html');
 
-        cy.get("[data-cy='mascota']").type('Max'); /// Aca le pones lo que quieres escribir
+        cy.get("[data-cy='nombre-servicio']").type('Corte de pelo'); /// Aca le pones lo que quieres escribir
 
-        cy.get("[data-cy='propietario']").type('Jesús Cochero');
+        cy.get("[data-cy='duracion']").type('1 hora');
 
-        cy.get("[data-cy='telefono']").type('3235252137');
-
-        cy.get("[data-cy='fecha']").type('2023-05-14');
-
-        cy.get("[data-cy='hora']").type('10:30');
-
-        cy.get("[data-cy='sintomas']").type('No come chocolates.');
+        cy.get("[data-cy='precio']").type('50');
 
         //* Enviar cita
         cy.get("[type='submit']").click();
@@ -22,7 +16,7 @@ describe('Llena los campos para una nueva cita y la elimina', () => {
         //. verificar el texto de citas
         cy.get('[id="administra"]')
             .invoke('text') //* Vamos a seleccionar el texto
-            .should('equal', 'Administra tus Citas '); //. Resultado: nos dice que si se encuentra ese texto nuevo
+            .should('equal', 'Administrar Servicios '); //. Resultado: nos dice que si se encuentra ese texto nuevo
 
         //. Seleccionar la alerta
         cy.get('[data-cy="alerta"]')
@@ -39,9 +33,9 @@ describe('Llena los campos para una nueva cita y la elimina', () => {
         /// Asegurarse de que tenga la clase correcta
         cy.get('#administra')
             .invoke('text')
-            .should('equal', 'No hay Citas, comienza creando una');
+            .should('equal', 'No hay servicios, comienza creando uno');
 
-        /// Esto lo que hace es tomar una captura de pantalla cuando llegue a esta parte del codigo
+        /// Esto lo que hace es tomar una captura de pantalla cuando llegue a esta parte del código
         cy.screenshot();
     });
 });

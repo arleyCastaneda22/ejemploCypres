@@ -1,15 +1,14 @@
-export const mascotaInput = document.querySelector('#mascota');
-export const propietarioInput = document.querySelector('#propietario');
-export const telefonoInput = document.querySelector('#telefono');
-export const fechaInput = document.querySelector('#fecha');
-export const horaInput = document.querySelector('#hora');
-export const sintomasInput = document.querySelector('#sintomas');
+// Selectores para el nuevo formulario de servicios
 
-// Contenedor para las citas
-export const contenedorCitas = document.querySelector('#citas');
+export const nombreServicioInput = document.querySelector('#nombre-servicio');
+export const duracionInput = document.querySelector('#duracion');
+export const precioInput = document.querySelector('#precio');
 
-// Formulario nuevas citas
-export const formulario = document.querySelector('#nueva-cita')
+// Contenedor para los servicios
+export const contenedorServicios = document.querySelector('#servicios');
+
+// Formulario nuevos servicios
+export const formulario = document.querySelector('#nuevo-servicio');
 
 // Heading
 export const heading = document.querySelector('#administra');
